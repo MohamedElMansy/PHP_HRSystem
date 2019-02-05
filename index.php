@@ -22,12 +22,12 @@ if(!isset($_SESSION['username']))
 }
 elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === true) {
     //admin views should be required here
-    require_once ("views/public/register.php");
+    require_once ("views/admin/users.php");
 
 }
 elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === false) {
     //members views should be required here
-    require_once ("views/public/jobs.php");
+    require_once ("views/public/edit_user.php");
 
 }
 //********************************************//

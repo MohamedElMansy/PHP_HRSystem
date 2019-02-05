@@ -2,62 +2,9 @@
 require_once("../../autoload.php");
 if (isset($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
-	echo "aa1";
-	$name=$_POST['name'];
-	$username=$_POST['username'];
-	$job=$_POST['job'];
-	$password=$_POST['password'];
-
-	$errors= array();
-	$file_name = $_FILES['img']['name'];
-	$file_size =$_FILES['img']['size'];
-	$file_tmp =$_FILES['img']['tmp_name'];
-	$file_type=$_FILES['img']['type'];
-	$x=explode('.',$_FILES['img']['name']);
-	$file_ext=strtolower(end($x));
-	$expensions= array("jpeg","jpg","png");
-	if(in_array($file_ext,$expensions)=== false)
-	{
-		$errors[]="extension not allowed, please choose a JPEG or PNG file.";
-	}
-	if($file_size > 1097152)
-	{
-		$errors[]='File size must be excately 1 MB';
-	}
-
-	$file_name2 = $_FILES['cv']['name'];
-	$file_size2 =$_FILES['cv']['size'];
-	$file_tmp2 =$_FILES['cv']['tmp_name'];
-	$file_type2=$_FILES['cv']['type'];
-	$x2=explode('.',$_FILES['cv']['name']);
-	$file_ext2=strtolower(end($x2));
-	$expensions2= array("pdf");
-	if(in_array($file_ext2,$expensions2)=== false)
-	{
-		$errors[]="extension not allowed, please choose a pdf file.";
-	}
-
-	if($file_size2 > 2097152)
-	{
-		$errors[]='File size must be excately 2 MB';
-	}
-
-
-	if(empty($errors)==true)
-	{
-		echo "aa2";
-		move_uploaded_file($file_tmp,"images/".$file_name);
-		move_uploaded_file($file_tmp2,"images/cvs/".$file_name2);
-
-		$dbhandler=new MYSQLHandler("users");
-		$db_result=$dbhandler->insert_data($username,$password,$name,$job,$file_name,$file_name2);
-
-	}
-	else
-	{
-		print_r($errors);
-	}
-
+//	echo "aa1";
+	$reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
+	$d=$reg->insert_form_data();
 }
 ?>
 <!--

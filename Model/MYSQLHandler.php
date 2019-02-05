@@ -100,9 +100,9 @@ class MYSQLHandler implements DbHandler
         return $this->get_result($sql);
     }
 
-    public function insert_data($name,$username,$password,$job,$image_name,$cv_name)
+    public function insert_data($username,$password,$name,$job,$image_name,$cv_name)
     {
-
+//        echo "aa3";
         $sql= "INSERT INTO `users`( `username`, `password`, `Name`, `Job`, `image`, `cv`) 
                 VALUES ('$username','$password','$name','$job','$image_name','$cv_name')";
 //        var_dump($sql);
@@ -111,5 +111,14 @@ class MYSQLHandler implements DbHandler
         return $res_handler;
     }
 
+    public function update_data($id,$name,$username,$password,$job,$image_name,$cv_name)
+    {
+//        echo "aa1";
+        $sql= "UPDATE $this->table SET `username`='$username',`password`='$password',
+        `Name`='$name',`Job`='$job',`image`='$image_name',`cv`='$cv_name' WHERE `id`= '$id'";
 
+        $res_handler=mysqli_query($this->handler,$sql);
+        print_r($res_handler);
+        return $res_handler;
+    }
 }

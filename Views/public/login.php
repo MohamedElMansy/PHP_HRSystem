@@ -12,15 +12,18 @@ if (isset($_POST['username']) && isset($_POST['password']))
 //			echo "success admin";
 			$_SESSION['username']=$username;
 			$_SESSION["is_admin"] = true;
-			header("Refresh:0");
+//			header("Refresh:0");
+			header('location:index.php');
 
 		}
 		elseif (empty($db_result_admin) && !empty($db_result_user))
 		{
-			echo "yes uesr";
+//			echo "yes uesr";
+//			print_r($db_result_user);
 			$_SESSION['username']=$username;
 			$_SESSION["is_admin"] = false;
-			header("Refresh:0");
+//			header("Refresh:0");
+			header('location:index.php');
 		}
 		else
 		{
@@ -120,7 +123,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			<div class="inner_sec_grids_info_w3ls">
 				<div class="signin-form">
 					<div class="login-form-rec">
-						<form method="post" action="index.php" >
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
 							<input type="text" name="username" placeholder="Username" required="">
 							<input type="password" name="password" placeholder="Password" required="">
 							<div class="tp">
