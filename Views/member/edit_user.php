@@ -1,10 +1,10 @@
 <?php
 
-if (isset($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
+if (isset($_POST['id'],$_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
     echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1";
     $reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
-    $d=$reg->update_form_data(3);
+    $d=$reg->update_form_data($_POST['id']);
 
 
 }
@@ -106,7 +106,7 @@ if (isset($_POST['logout']))
 <!--            </div>-->
 <!--            <h3>Personal info</h3>-->
 
-            <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="form" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="" role="form" method="POST" enctype="multipart/form-data">
                 <div class="col-md-3" style="width: 80%" style="margin-top: 5%" >
                     <div class="text-center">
                         <img src="views/public/images/<?php echo $current_user['image']?>" width="50%" height="50%" class="avatar img-circle" alt="avatar">
@@ -123,6 +123,7 @@ if (isset($_POST['logout']))
                     <div class="col-lg-8">
 
                         <input class="form-control" type="text" value="<?php echo $current_user['username']?>" name="username">
+                        <input class="form-control" type="text" style="display: none" value="<?php echo $current_user['id']?>" name="id">
                     </div>
                 </div>
                 <div class="form-group">

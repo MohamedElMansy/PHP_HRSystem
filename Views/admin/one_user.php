@@ -114,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- banner -->
 <div class="inner_page_agile">
-    <h3>User Profile</h3>
+    <h3>Users</h3>
     <!--		<p>Add Some Short Description</p>-->
 
 </div>
@@ -153,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-12">
                         <div class="bio-image">
 
-                            <img src="<?php echo "../views/public/images/".$current_user['image'] ?>" alt="image" />
+                            <img src="<?php echo "../views/public/images/".$current_user['image'] ?>" alt="image" width="70%" height="100%" />
                         </div>
                     </div>
                 </div>

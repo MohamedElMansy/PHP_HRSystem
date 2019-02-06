@@ -81,13 +81,13 @@ class Register
 //
 //            $dbhandler=new MYSQLHandler("users");
 //            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
-            // if ($db_result)
-            // {
-            //     session_start();
-            //     $_SESSION['username']=$this->username;
-            //     $_SESSION["is_admin"] = false;
-            //     header('location:../../index.php');
-            // }
+//            if ($db_result)
+//            {
+//                session_start();
+//                $_SESSION['username']=$this->username;
+//                $_SESSION["is_admin"] = false;
+//                header('location:../../index.php');
+//            }
 //        }
 //        else
 //        {
@@ -124,7 +124,7 @@ class Register
     {
         if(empty($this->errors)==true)
         {
-//            echo "aa2";
+//           echo "aa2";
             move_uploaded_file($this->file_tmp_img,"views/public/images/".$this->file_name_img);
             move_uploaded_file($this->file_tmp_cv,"views/public/images/cvs/".$this->file_name_cv);
 
@@ -132,10 +132,9 @@ class Register
             $db_result=$dbhandler->update_data($id,$this->name,$this->username,$this->password,$this->job,$this->file_name_img,$this->file_name_cv);
             if ($db_result)
             {
-                
                 $_SESSION['username']=$this->username;
-                $_SESSION["is_admin"] = false;
-                header('location:../../index.php');
+
+                header('location:index.php');
             }
         }
         else

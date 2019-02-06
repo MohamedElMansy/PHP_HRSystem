@@ -114,9 +114,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<br>
 							<br>
 							<label for="cv" style="background-color: transparent;">Upload your Cv </label>
-							<div >
-								<input type="file" id="cv" class="form-control  btn-warning" name="cv">
-							</div>
+							<label class="btn btn-default btn-file">
+								Upload <input type="file" name="cv" style="display: none;">
+							</label>
+<!--							<label for="cv" style="background-color: transparent;">Upload your Cv </label>-->
+<!--							<div >-->
+<!--								<input type="file" id="cv" class="form-control  btn-warning" name="cv">-->
+<!--							</div>-->
 <!--							<input type="file" id="cv" name="cv">-->
 
 
