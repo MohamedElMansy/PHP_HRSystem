@@ -73,59 +73,70 @@ class Register
         }
 
 
-        if(empty($errors)==true)
-        {
-            echo "aa2";
-            move_uploaded_file($file_tmp,"images/".$file_name);
-            move_uploaded_file($file_tmp2,"images/cvs/".$file_name2);
-
-            $dbhandler=new MYSQLHandler("users");
-            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
-
-        }
-        else
-        {
-            print_r($errors);
-        }
-    }
-
-    public function insert_form_data()
-{
-    if(empty($this->errors)==true)
-    {
-        echo "aa2";
-        move_uploaded_file($this->file_tmp_img,"images/".$this->file_name_img);
-        move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_name_cv);
-
-        $dbhandler=new MYSQLHandler("users");
-        $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
-//        if($db_result)
+//        if(empty($errors)==true)
 //        {
-//            echo "ssss";
+////            echo "aa2";
+//            move_uploaded_file($this->file_tmp_img,"images/".$this->file_name_img);
+//            move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_name_cv);
+//
+//            $dbhandler=new MYSQLHandler("users");
+//            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
+            // if ($db_result)
+            // {
+            //     session_start();
+            //     $_SESSION['username']=$this->username;
+            //     $_SESSION["is_admin"] = false;
+            //     header('location:../../index.php');
+            // }
 //        }
 //        else
 //        {
-//            echo "aaa8";
+//            print_r($this->errors);
 //        }
     }
-    else
+
+    public function insert_form_data()
     {
-        print_r($this->errors);
+        if(empty($this->errors)==true)
+        {
+    //        echo "aa2";
+            move_uploaded_file($this->file_tmp_img,"images/".$this->file_name_img);
+            move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_name_cv);
+
+            $dbhandler=new MYSQLHandler("users");
+            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
+            if ($db_result)
+            {
+                session_start();
+                $_SESSION['username']=$this->username;
+                $_SESSION["is_admin"] = false;
+                header('location:../../index.php');
+            }
+        }
+        else
+        {
+            print_r($this->errors);
+        }
     }
-}
 
 
     public function update_form_data($id)
     {
         if(empty($this->errors)==true)
         {
-            echo "aa2";
+//            echo "aa2";
             move_uploaded_file($this->file_tmp_img,"views/public/images/".$this->file_name_img);
             move_uploaded_file($this->file_tmp_cv,"views/public/images/cvs/".$this->file_name_cv);
 
             $dbhandler=new MYSQLHandler("users");
             $db_result=$dbhandler->update_data($id,$this->name,$this->username,$this->password,$this->job,$this->file_name_img,$this->file_name_cv);
-
+            if ($db_result)
+            {
+                
+                $_SESSION['username']=$this->username;
+                $_SESSION["is_admin"] = false;
+                header('location:../../index.php');
+            }
         }
         else
         {

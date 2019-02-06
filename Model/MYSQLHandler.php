@@ -70,7 +70,6 @@ class MYSQLHandler implements DbHandler
 //            echo $sql;
 //        }
         $res_handler=mysqli_query($this->handler,$sql);
-
         while ($row=mysqli_fetch_array($res_handler,MYSQLI_ASSOC))
         {
             $_arr_result[]=array_change_key_case($row);
@@ -81,7 +80,14 @@ class MYSQLHandler implements DbHandler
     }
     public function get_record_by_id($index,$primary_key)
     {
-        $sql="select * from $this->table WHERE $primary_key =$index";
+        $sql="select * from $this->table WHERE $primary_key ='$index'";
+        return $this->get_result($sql);
+    }
+
+    public function get_record_by_username($index,$username)
+    {
+        $sql="select * from $this->table WHERE $username ='$index'";
+//        print_r($sql);
         return $this->get_result($sql);
     }
 

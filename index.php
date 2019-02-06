@@ -26,8 +26,9 @@ elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === true) {
 
 }
 elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === false) {
+
     //members views should be required here
-    require_once ("views/public/edit_user.php");
+    require_once ("views/member/member_routing.php");
 
 }
 //********************************************//

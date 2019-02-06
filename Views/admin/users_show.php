@@ -103,14 +103,7 @@ if (isset($_POST['logout']))
     <div class="container">
         <div class="col-md-4 job_info_right">
 
-<!--            <div class="widget_search">-->
-<!--                <h5 class="widget-title">Search</h5>-->
-<!---->
-<!--                <input type="text" class="form-control jb_2" placeholder="Name">-->
-<!---->
-<!--                <input type="submit" value="Search">-->
-<!---->
-<!--            </div>-->
+
         </div>
         <div class="tittle_head_w3ls">
             <h3 class="tittle" style="margin-right: 75%;">Users</h3>
