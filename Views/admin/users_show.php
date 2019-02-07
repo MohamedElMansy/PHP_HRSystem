@@ -154,6 +154,10 @@ if (isset($_POST['logout']))
 
     <div class="clearfix"></div>
 </div>
+<a class="btn btn-primary btn-lg btn-block " href="<?= "index.php?next=".$previous_index?>" role="button">Previous</a>
+<a class="btn btn-success btn-lg btn-block " href="<?= "index.php?next=".$next_index?>" role="button">Next</a>
+
+
 </div>
 <!-- //inner_content -->
 

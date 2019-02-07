@@ -114,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- banner -->
 <div class="inner_page_agile">
-    <h3>Users</h3>
+    <h3>User Profile</h3>
     <!--		<p>Add Some Short Description</p>-->
 
 </div>
