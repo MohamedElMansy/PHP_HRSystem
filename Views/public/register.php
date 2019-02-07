@@ -2,9 +2,18 @@
 require_once("../../autoload.php");
 if (isset($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
-//	echo "aa1";
+	$err=array();
+	$username_check=new MYSQLHandler("users");
+	if($username_check->get_record_by_username($_POST['username'],"username"))
+	{
+
+			$err[]= "Username already exist , Please Choose Another one";
+	}
 	$reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
 	$d=$reg->insert_form_data();
+	$errors=$reg->getErrors();
+	$errors=array_merge($err,$errors);
+
 }
 ?>
 <!--
@@ -90,6 +99,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			
 		</div>
 	</div>
+	<?php if (!empty($errors))
+	{?>
+	<div class="col-md-9 personal-info">
+		<div class="alert alert-info alert-danger">
+			<a class="panel-close close" data-dismiss="alert">×</a>
+			<?php
+			foreach ($errors as $error)
+				echo $error."<br>";
+
+			?>
+
+		</div>
+		<?php } ?>
 	<!--//w3_short-->
 	<!-- /inner_content -->
 	<div class="inner_content_info_agileits">
@@ -107,17 +129,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<input type="text" name="job" placeholder="Job" required="">
 							<br>
 							<label for="img" style="background-color: transparent;">Choose a profile picture</label>
-<!--							<input  type="file" id="img" name="img" accept="image/png, image/jpeg">-->
-							<div class="form-group">
-								<input type="file" id="img" onchange="previewImage();" class="form-control  btn-warning" name="img">
-							</div>
+
+							<label class="btn btn-default btn-file">
+								Upload <input type="file" name="img" style="display: none;">
+							</label>
+
 							<br>
 							<br>
 							<label for="cv" style="background-color: transparent;">Upload your Cv </label>
-							<div >
-								<input type="file" id="cv" class="form-control  btn-warning" name="cv">
-							</div>
-<!--							<input type="file" id="cv" name="cv">-->
+							<label class="btn btn-default btn-file">
+								Upload <input type="file" name="cv" style="display: none;">
+							</label>
 
 
 							<input type="submit" value="Register">

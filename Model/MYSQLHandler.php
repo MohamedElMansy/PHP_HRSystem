@@ -122,9 +122,9 @@ class MYSQLHandler implements DbHandler
 //        echo "aa1";
         $sql= "UPDATE $this->table SET `username`='$username',`password`='$password',
         `Name`='$name',`Job`='$job',`image`='$image_name',`cv`='$cv_name' WHERE `id`= '$id'";
-
+//        echo $sql;
         $res_handler=mysqli_query($this->handler,$sql);
-        print_r($res_handler);
+//        print_r($res_handler);
         return $res_handler;
     }
 }
