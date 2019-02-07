@@ -167,6 +167,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>UserName :<?php echo $current_user["username"] ?></h3>
                     <br>
                     <h4>Job :<?php echo $current_user["job"]?></h4>
+
+                    <?php $cv = $cvpath_admin."/".$current_user["cv"]  ?>
+                    <?php echo "<br><h3><a href=$cv target='_blank'><span>View CV</span></a></h3>";?>
                 </div>
             </div>
         </div>

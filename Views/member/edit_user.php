@@ -2,11 +2,11 @@
 
 if (isset($_POST['id'],$_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
-    echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1";
+//    echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1";
     $reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
     $d=$reg->update_form_data($_POST['id']);
 
-
+    $errors=$reg->getErrors();
 }
 if (isset($_POST['logout']))
 {
@@ -98,21 +98,32 @@ if (isset($_POST['logout']))
 
 
         <!-- edit form column -->
+        <?php if (!empty($errors))
+            {?>
         <div class="col-md-9 personal-info">
-<!--            <div class="alert alert-info alert-dismissable">-->
-<!--                <a class="panel-close close" data-dismiss="alert">×</a>-->
-<!--                <i class="fa fa-coffee"></i>-->
-<!--                This is an <strong>.alert</strong>. Use this to show important messages to the user.-->
-<!--            </div>-->
+            <div class="alert alert-info alert-danger">
+                <a class="panel-close close" data-dismiss="alert">×</a>
+                <?php
+                    foreach ($errors as $error)
+                        echo $error."<br>";
+
+                ?>
+
+            </div>
+         <?php } ?>
 <!--            <h3>Personal info</h3>-->
 
             <form class="form-horizontal" action="" role="form" method="POST" enctype="multipart/form-data">
                 <div class="col-md-3" style="width: 80%" style="margin-top: 5%" >
-                    <div class="text-center">
-                        <img src="views/public/images/<?php echo $current_user['image']?>" width="50%" height="50%" class="avatar img-circle" alt="avatar">
-                        <h6>Upload a different photo...</h6>
-
-                        <input type="file" name="img" class="form-control">
+                    <div class="text-center" style="padding-top: 5%">
+                        <img src="views/public/images/<?php echo $current_user['image']?>" width="50%" height="60%" class="avatar img-circle" alt="avatar">
+                        <br>
+                        <div style="padding-top: 4%;">
+                            <label for="cv" style="background-color: transparent;">Upload your Pic </label>
+                            <label class="btn btn-default btn-file">
+                                Upload <input type="file" name="img" style="display: none;">
+                            </label>
+                        </div>
                         <br>
                         <br>
                     </div>
@@ -144,27 +155,17 @@ if (isset($_POST['logout']))
                         <input class="form-control" type="text" value="<?php echo $current_user['job']?>" name="job">
                     </div>
                 </div>
-
-                <label for="cv" style="background-color: transparent;">Upload your Cv </label>
-                <div >
-                    <input type="file" id="cv"  value="<?php echo $current_user['cv']?>" class="form-control btn-warning" name="cv">
+                <div style="padding-left: 11%;  padding-top: 1%;">
+                    <label for="cv" style="background-color: transparent;">Upload your Cv </label>
+                    <label class="btn btn-default btn-file">
+                        Upload <input type="file" name="cv" style="display: none;">
+                    </label>
                 </div>
 <!--                <input type="file" id="selectedFile" />-->
 <!--                <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />-->
                 <br>
                 <br>
-<!--                <div class="form-group">-->
-<!--                    <label class="col-md-3 control-label">Password:</label>-->
-<!--                    <div class="col-md-8">-->
-<!--                        <input class="form-control" type="password" value="11111122333">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label class="col-md-3 control-label">Confirm password:</label>-->
-<!--                    <div class="col-md-8">-->
-<!--                        <input class="form-control" type="password" value="11111122333">-->
-<!--                    </div>-->
-<!--                </div>-->
+
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">

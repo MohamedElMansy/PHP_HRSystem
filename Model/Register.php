@@ -23,14 +23,28 @@ class Register
 
     public function __construct($name,$username,$password,$job,$img,$cv)
     {
-        $this->password=$password;
-        $this->name=$name;
-        $this->username=$username;
-        $this->job=$job;
-        $this->img=$img;
-        $this->cv=$cv;
+        $pass_length = strlen((string)$password);
+        if ($pass_length > __PASSWORDMAXLENGTH__)
+        {
+            $this->errors[]='Too Long Password , Max Length is 16';
+        }
+        elseif ($pass_length < __PASSWORDMINLENGTH__)
+        {
+            $this->errors[]='Too Short Password , Min Length is 8';
+        }
 
-        $this->registration();
+        if(empty($errors)==true)
+
+        {
+            $this->password=$password;
+            $this->name=$name;
+            $this->username=$username;
+            $this->job=$job;
+            $this->img=$img;
+            $this->cv=$cv;
+
+            $this->registration();
+        }
 
 
     }
@@ -48,9 +62,9 @@ class Register
         $expensions= array("jpg");
         if(in_array($file_ext,$expensions)=== false)
         {
-            $this->errors[]="extension not allowed, please choose a JPG ";
+            $this->errors[]="please choose a JPG ";
         }
-        if($file_size > 1097152)
+        if($file_size > __MAXSIZE__)
         {
             $this->errors[]='File size must be excately 1 MB';
         }
@@ -64,10 +78,10 @@ class Register
         $expensions2= array("pdf");
         if(in_array($file_ext2,$expensions2)=== false)
         {
-            $this->errors[]="extension not allowed, please choose a pdf file.";
+            $this->errors[]="please choose a pdf file.";
         }
 
-        if($file_size2 > 2097152)
+        if($file_size2 > __MAXSIZE__)
         {
             $this->errors[]='File size must be excately 2 MB';
         }
@@ -105,6 +119,7 @@ class Register
 
             $dbhandler=new MYSQLHandler("users");
             $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
+            print_r($db_result);
             if ($db_result)
             {
                 session_start();
@@ -112,11 +127,9 @@ class Register
                 $_SESSION["is_admin"] = false;
                 header('location:../../index.php');
             }
+
         }
-        else
-        {
-            print_r($this->errors);
-        }
+
     }
 
 
@@ -137,9 +150,14 @@ class Register
                 header('location:index.php');
             }
         }
-        else
-        {
-            print_r($this->errors);
-        }
+
+    }
+
+    /**
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }
