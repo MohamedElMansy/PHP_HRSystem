@@ -1,4 +1,8 @@
 <?php
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../../index.php");
+
+}
 $next_index=$current_index+__RECORDS_PER_PAGE__;
 if(($current_index-__RECORDS_PER_PAGE__)>0){
     $previous_index=$current_index-__RECORDS_PER_PAGE__;

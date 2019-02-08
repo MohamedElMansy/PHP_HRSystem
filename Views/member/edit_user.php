@@ -1,4 +1,8 @@
 <?php
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../../index.php");
+
+}
 
 if (isset($_POST['id'],$_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {

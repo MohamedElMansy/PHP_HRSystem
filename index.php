@@ -5,8 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+define("__ALLOW_ACCESS__", 1);
 require_once("autoload.php");
-define("_ALLOW_ACCESS", 1);
+
 session_start();
 session_regenerate_id();
 

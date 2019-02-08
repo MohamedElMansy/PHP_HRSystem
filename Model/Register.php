@@ -6,6 +6,12 @@
  * Date: 2/1/2019
  * Time: 4:39 PM
  */
+
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../index.php");
+
+}
+
 class Register
 {
 

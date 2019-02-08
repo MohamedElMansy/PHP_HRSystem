@@ -1,5 +1,10 @@
 <?php
 
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../index.php");
+
+}
+
 /**
  * Created by PhpStorm.
  * User: El Mansy

@@ -1,5 +1,8 @@
 <?php
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../../index.php");
 
+}
 $db=new MySQLHandler("users");
 
 if($db){

@@ -6,6 +6,13 @@
  * Date: 1/19/2019
  * Time: 1:10 PM
  */
+
+
+if(__ALLOW_ACCESS__ !=1) {
+    header("location:../index.php");
+
+}
+
 class MYSQLHandler implements DbHandler
 {
     private $table;
