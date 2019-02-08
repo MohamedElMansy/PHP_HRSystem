@@ -93,6 +93,9 @@ class MYSQLHandler implements DbHandler
 
     public function get_record_by_login_user($username, $password)
     {
+
+        $password = md5($password);
+
         $sql = "select * from $this->table where username = '$username' AND password = '$password';";
 //        echo "bb";
 
@@ -101,6 +104,7 @@ class MYSQLHandler implements DbHandler
 
     public function get_record_by_login_admin($username, $password)
     {
+        $password = md5($password);
         $sql = "select * from $this->table where username = '$username' AND password = '$password' AND `is_admin`= 'true';";
 
         return $this->get_result($sql);

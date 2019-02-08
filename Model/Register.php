@@ -36,7 +36,8 @@ class Register
         if(empty($errors)==true)
 
         {
-            $this->password=$password;
+            $this->password = md5($password);
+//            $this->password=$password;
             $this->name=$name;
             $this->username=$username;
             $this->job=$job;
