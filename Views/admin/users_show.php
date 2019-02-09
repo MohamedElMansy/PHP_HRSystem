@@ -149,7 +149,7 @@ if (isset($_POST['logout']))
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="location_box1">
-                                                <h6><a href="location_single.html"><?= $user['name'] ?> </a></h6>
+                                                <h6><a><?= $user['name'] ?> </a></h6>
                                                 <p><?= $user['username'] ?></p>
 
                                                 <ul class="links_bottom">
@@ -176,9 +176,9 @@ if (isset($_POST['logout']))
     <div class="clearfix"></div>
 </div>
 <div  style=" margin-left: 15%;"  >
-    <?php if(!empty($Users)){?>
-<a class="btn btn-primary btn-lg " href="<?php echo $_SERVER['PHP_SELF']."?next=".$previous ?>" role="button">Previous</a>
 
+<a class="btn btn-primary btn-lg " href="<?php echo $_SERVER['PHP_SELF']."?next=".$previous ?>" role="button">Previous</a>
+    <?php if(!empty($Users)){?>
 <a class="btn btn-success btn-lg" href="<?php echo $_SERVER['PHP_SELF']."?next=".$next ?>" role="button">Next</a>
 <?php } ?>
 

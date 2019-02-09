@@ -32,12 +32,11 @@ class MYSQLHandler implements DbHandler
         if($handler)
         {
             $this->handler=$handler;
-//            echo "success";
+
             return true;
         }
         else
         {
-
             echo "connection falied";
             return false;
         }
@@ -66,7 +65,6 @@ class MYSQLHandler implements DbHandler
 
 
        return $this->get_result($sql);
-//        return $sql;
     }
 
     public function get_result($sql)
@@ -95,7 +93,6 @@ class MYSQLHandler implements DbHandler
     public function get_record_by_username($index,$username)
     {
         $sql="select * from $this->table WHERE $username ='$index'";
-//        print_r($sql);
         return $this->get_result($sql);
     }
 
@@ -105,7 +102,6 @@ class MYSQLHandler implements DbHandler
         $password = md5($password);
 
         $sql = "select * from $this->table where username = '$username' AND password = '$password';";
-//        echo "bb";
         return $this->get_result($sql);
     }
 
@@ -118,26 +114,32 @@ class MYSQLHandler implements DbHandler
 
     public function insert_data($username,$password,$name,$job,$image_name,$cv_name)
     {
-//        echo "aa3";
+
         $sql= "INSERT INTO `users`( `username`, `password`, `Name`, `Job`, `image`, `cv`) 
                 VALUES ('$username','$password','$name','$job','$image_name','$cv_name')";
-//        var_dump($sql);
         $res_handler=mysqli_query($this->handler,$sql);
-//        var_dump($res_handler);
         $this->disconnect();
         return $res_handler;
     }
 
     public function update_data($id,$name,$username,$password,$job,$image_name,$cv_name)
     {
-//        echo "aa1";
+
         $sql= "UPDATE $this->table SET `username`='$username',`password`='$password',
         `Name`='$name',`Job`='$job',`image`='$image_name',`cv`='$cv_name' WHERE `id`= '$id'";
-//        echo $sql;
+
         $res_handler=mysqli_query($this->handler,$sql);
-//        print_r($res_handler);
         $this->disconnect();
         return $res_handler;
+    }
+
+    public function username_check_exist($id,$username)
+    {
+        $sql ="SELECT * FROM $this->table WHERE username ='$username' AND id != '$id' ";
+        $res_handler=mysqli_query($this->handler,$sql);
+        $this->disconnect();
+        return $res_handler;
+
     }
 
 }

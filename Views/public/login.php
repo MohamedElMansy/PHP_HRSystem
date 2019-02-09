@@ -1,33 +1,24 @@
 <?php
 if(__ALLOW_ACCESS__ !=1) {
 	header("location:../index.php");
-
 }
 
 if (isset($_POST['username']) && isset($_POST['password']))
 	{
 		$username=$_POST['username'];
 		$password=$_POST['password'];
-//		echo "test";
 		$db_handler= new LogIn($username,$password);
 		$db_result_user=$db_handler->db_check_user();
 		$db_result_admin=$db_handler->db_check_admin();
-//		print_r($db_result);
 		if (isset($db_result_admin) && !empty($db_result_admin) ) {
-//			echo "success admin";
 			$_SESSION['username']=$username;
 			$_SESSION["is_admin"] = true;
-//			header("Refresh:0");
 			header('location:index.php');
-
 		}
 		elseif (empty($db_result_admin) && !empty($db_result_user))
 		{
-//			echo "yes uesr";
-//			print_r($db_result_user);
 			$_SESSION['username']=$username;
 			$_SESSION["is_admin"] = false;
-//			header("Refresh:0");
 			header('location:index.php');
 		}
 		else

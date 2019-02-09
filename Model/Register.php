@@ -45,7 +45,6 @@ class Register
 
         {
             $this->password = md5($password);
-//            $this->password=$password;
             $this->name=$name;
             $this->username=$username;
             $this->job=$job;
@@ -111,7 +110,6 @@ class Register
     {
         if(empty($this->errors)==true)
         {
-    //        echo "aa2";
             move_uploaded_file($this->file_tmp_img,"images/".$this->file_img_dbname);
             move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_cv_dbname);
 
@@ -135,7 +133,6 @@ class Register
     {
         if(empty($this->errors)==true)
         {
-//           echo "aa2";
             move_uploaded_file($this->file_tmp_img,"views/public/images/".$this->file_img_dbname);
             move_uploaded_file($this->file_tmp_cv,"views/public/images/cvs/".$this->file_cv_dbname);
 
@@ -151,9 +148,6 @@ class Register
 
     }
 
-    /**
-     * @return array
-     */
     public function getErrors()
     {
         return $this->errors;

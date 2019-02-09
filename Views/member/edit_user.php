@@ -1,21 +1,31 @@
 <?php
 if(__ALLOW_ACCESS__ !=1) {
     header("location:../../index.php");
-
 }
 
 if (isset($_POST['id'],$_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
-//    echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1";
-    $reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
-    $d=$reg->update_form_data($_POST['id']);
+    $errors=array();
+    $error_exist_username=array();
+    $db_check_username =new MYSQLHandler("users");
+    $check_exist=$db_check_username->username_check_exist($_POST['id'],$_POST['username']);
 
-    $errors=$reg->getErrors();
+    if($check_exist->num_rows==0)
+    {
+        $reg= new Register($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']);
+        $d=$reg->update_form_data($_POST['id']);
+        $errors=$reg->getErrors();
+    }
+    else
+    {
+        $error_exist_username=['username already exist'];
+    }
+
+    $errors=array_merge($error_exist_username,$errors);
 }
 if (isset($_POST['logout']))
 {
     session_destroy();
-//    header("Refresh:0");
     header('location:index.php');
 }
 ?>
@@ -159,7 +169,7 @@ if (isset($_POST['logout']))
                         <input class="form-control" type="text" value="<?php echo $current_user['job']?>" name="job">
                     </div>
                 </div>
-                <div style="padding-left: 11%;  padding-top: 1%;">
+                <div style="padding-left: 15%;  padding-top: 1%;">
                     <label for="cv" style="background-color: transparent;">Upload your Cv </label>
                     <label class="btn btn-default btn-file">
                         Upload <input type="file" name="cv" style="display: none;">
