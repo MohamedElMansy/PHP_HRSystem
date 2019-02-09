@@ -147,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-12">
                         <div class="bio-image">
 
-                            <img src="<?php echo "views/public/images/".$user['image'] ?>" alt="image"  width="70%" height="100%"/>
+                            <img src="<?php echo __IMAGE_PATH_EDIT.$user['image'] ?>" alt="image"  width="70%" height="100%"/>
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>UserName :<?php echo $user["username"] ?></h3>
                     <br>
                     <h4>Job :<?php echo $user["job"]?></h4>
-                    <?php $cv =$cvpath_user."/".$user["cv"]  ?>
+                    <?php $cv =__CV_PATH_USER."/".$user["cv"]  ?>
                     <?php echo "<br><h3><a href=$cv target='_blank'><span>View CV</span></a></h3>";?>
                 </div>
             </div>

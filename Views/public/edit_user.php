@@ -150,18 +150,6 @@ if (isset($_POST['logout']))
                 </div>
                 <br>
                 <br>
-<!--                <div class="form-group">-->
-<!--                    <label class="col-md-3 control-label">Password:</label>-->
-<!--                    <div class="col-md-8">-->
-<!--                        <input class="form-control" type="password" value="11111122333">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label class="col-md-3 control-label">Confirm password:</label>-->
-<!--                    <div class="col-md-8">-->
-<!--                        <input class="form-control" type="password" value="11111122333">-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">

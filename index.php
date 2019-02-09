@@ -19,17 +19,17 @@ session_regenerate_id();
 if(!isset($_SESSION['username']))
 {
     //public views should be required here
-    require_once ("views/public/login.php");
+    require_once (__INDEX_ROUTE_LOGIN);
 }
 elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === true) {
     //admin views should be required here
-    require_once ("views/admin/users.php");
+    require_once (__INDEX_ROUTE_USERS);
 
 }
 elseif (isset($_SESSION['username']) && $_SESSION["is_admin"] === false) {
 
     //members views should be required here
-    require_once ("views/member/member_routing.php");
+    require_once (__INDEX_ROUTE_MEMBERROUTING);
 
 }
 //********************************************//

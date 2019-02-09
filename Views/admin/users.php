@@ -11,11 +11,11 @@ if($db){
 	if(isset($_GET["id"])&&!empty($_GET["id"])){
 		$id=$_GET["id"];
 		$current_user=$db->get_record_by_id($id,"id")[0];
-		require_once("views/admin/one_user.php");
+		require_once(__USERS_ROUTE_ONEUSER);
 	}else{
 		$Users=$db->get_data(["Name","username","Job","image","id"],$current_index);
 //
-		require_once("views/admin/users_show.php");
+		require_once(__USERS_ROUTE_USERS_SHOW);
 
 	}
 }

@@ -96,12 +96,7 @@ if (isset($_POST['logout']))
 <div class="services-breadcrumb_w3layouts">
     <div class="inner_breadcrumb">
 
-        <!--
-                    <ul class="short_w3ls"_w3ls>
-                        <li><a href="index.html">Home</a><span>|</span></li>
-                        <li>Jobs</li>
-                    </ul>
-        -->
+
     </div>
 </div>
 <!--//w3_short-->

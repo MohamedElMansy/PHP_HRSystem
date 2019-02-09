@@ -141,7 +141,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 						</form>
 					</div>
 					
-					<p><a href="views/public/register.php"> Don't have an account?</a></p>
+					<p><a href=<?php echo __REGISTERATION_PAGE__ ?>> Don't have an account?</a></p>
 				</div>
 			</div>
 		</div>

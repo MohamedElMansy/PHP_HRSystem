@@ -9,13 +9,13 @@ if($db){
     if(isset($_GET["id"])&&!empty($_GET["id"])){
         $id=$_GET["id"];
         $current_user=$db->get_record_by_id($id,"id")[0];
-        require_once("views/member/edit_user.php");
+        require_once(__MEMBERROUTING_ROUTE_EDITUSER);
     }else{
         $user=$db->get_record_by_username($_SESSION['username'],"username");
         $user=$user[0];
 //        print_r($user);
 
-        require_once("views/member/view_my_profile.php");
+        require_once(__MEMBERROUTING_ROUTE_VIEWMYPROFILE);
 
     }
 }
