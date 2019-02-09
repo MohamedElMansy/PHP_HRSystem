@@ -25,6 +25,8 @@ class Register
     private $file_name_cv;
     private $file_tmp_img;
     private $file_tmp_cv ;
+    private $file_cv_dbname ;
+    private $file_img_dbname ;
    private $errors = array();
 
     public function __construct($name,$username,$password,$job,$img,$cv)
@@ -76,7 +78,10 @@ class Register
             $this->errors[]='File size must be excately 1 MB';
         }
 
-        $this->file_name_cv = $this->cv['name'];
+        $this->file_name_img=  $this->username;
+        $this->file_img_dbname=$this->file_name_img.".".$file_ext;
+
+        $this->file_name_cv =  $this->cv['name'];
         $file_size2 =$this->cv['size'];
         $this->file_tmp_cv =$this->cv['tmp_name'];
         $file_type2=$this->cv['type'];
@@ -93,27 +98,13 @@ class Register
             $this->errors[]='File size must be excately 2 MB';
         }
 
+        $this->file_name_cv =  $this->username;
+        $this->file_cv_dbname=$this->file_name_cv.".".$file_ext2;
 
-//        if(empty($errors)==true)
-//        {
-////            echo "aa2";
-//            move_uploaded_file($this->file_tmp_img,"images/".$this->file_name_img);
-//            move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_name_cv);
-//
-//            $dbhandler=new MYSQLHandler("users");
-//            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
-//            if ($db_result)
-//            {
-//                session_start();
-//                $_SESSION['username']=$this->username;
-//                $_SESSION["is_admin"] = false;
-//                header('location:../../index.php');
-//            }
-//        }
-//        else
-//        {
-//            print_r($this->errors);
-//        }
+
+
+
+
     }
 
     public function insert_form_data()
@@ -121,11 +112,11 @@ class Register
         if(empty($this->errors)==true)
         {
     //        echo "aa2";
-            move_uploaded_file($this->file_tmp_img,"images/".$this->file_name_img);
-            move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_name_cv);
+            move_uploaded_file($this->file_tmp_img,"images/".$this->file_img_dbname);
+            move_uploaded_file($this->file_tmp_cv,"images/cvs/".$this->file_cv_dbname);
 
             $dbhandler=new MYSQLHandler("users");
-            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_name_img,$this->file_name_cv);
+            $db_result=$dbhandler->insert_data($this->username,$this->password,$this->name,$this->job,$this->file_img_dbname,$this->file_cv_dbname);
             print_r($db_result);
             if ($db_result)
             {
@@ -145,11 +136,11 @@ class Register
         if(empty($this->errors)==true)
         {
 //           echo "aa2";
-            move_uploaded_file($this->file_tmp_img,"views/public/images/".$this->file_name_img);
-            move_uploaded_file($this->file_tmp_cv,"views/public/images/cvs/".$this->file_name_cv);
+            move_uploaded_file($this->file_tmp_img,"views/public/images/".$this->file_img_dbname);
+            move_uploaded_file($this->file_tmp_cv,"views/public/images/cvs/".$this->file_cv_dbname);
 
             $dbhandler=new MYSQLHandler("users");
-            $db_result=$dbhandler->update_data($id,$this->name,$this->username,$this->password,$this->job,$this->file_name_img,$this->file_name_cv);
+            $db_result=$dbhandler->update_data($id,$this->name,$this->username,$this->password,$this->job,$this->file_img_dbname,$this->file_cv_dbname);
             if ($db_result)
             {
                 $_SESSION['username']=$this->username;

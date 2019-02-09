@@ -1,4 +1,5 @@
 <?php
+define("__ALLOW_ACCESS__", 1);
 require_once("../../autoload.php");
 if (isset($_POST['name'],$_POST['username'],$_POST['password'],$_POST['job'],$_FILES['img'],$_FILES['cv']))
 {
