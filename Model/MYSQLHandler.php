@@ -82,6 +82,7 @@ class MYSQLHandler implements DbHandler
             $_arr_result[]=array_change_key_case($row);
         }
 
+        $this->disconnect();
         return $_arr_result;
 
     }
@@ -105,7 +106,6 @@ class MYSQLHandler implements DbHandler
 
         $sql = "select * from $this->table where username = '$username' AND password = '$password';";
 //        echo "bb";
-
         return $this->get_result($sql);
     }
 
@@ -113,7 +113,6 @@ class MYSQLHandler implements DbHandler
     {
         $password = md5($password);
         $sql = "select * from $this->table where username = '$username' AND password = '$password' AND `is_admin`= 'true';";
-
         return $this->get_result($sql);
     }
 
@@ -125,6 +124,7 @@ class MYSQLHandler implements DbHandler
 //        var_dump($sql);
         $res_handler=mysqli_query($this->handler,$sql);
 //        var_dump($res_handler);
+        $this->disconnect();
         return $res_handler;
     }
 
@@ -136,6 +136,8 @@ class MYSQLHandler implements DbHandler
 //        echo $sql;
         $res_handler=mysqli_query($this->handler,$sql);
 //        print_r($res_handler);
+        $this->disconnect();
         return $res_handler;
     }
+
 }

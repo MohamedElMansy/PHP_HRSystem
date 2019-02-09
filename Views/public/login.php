@@ -32,7 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		}
 		else
 		{
-			echo "login falied";
+			$errors=['Wrong username or password '];
 		}
 	}
 ?>
@@ -118,6 +118,19 @@ if (isset($_POST['username']) && isset($_POST['password']))
 -->
 		</div>
 	</div>
+	<?php if (!empty($errors))
+	{?>
+	<div class="col-md-9 personal-info">
+		<div class="alert alert-info alert-danger">
+			<a class="panel-close close" data-dismiss="alert">×</a>
+			<?php
+			foreach ($errors as $error)
+				echo $error."<br>";
+
+			?>
+
+		</div>
+		<?php } ?>
 	<!--//w3_short-->
 	<!-- /inner_content -->
 	<div class="inner_content_info_agileits">
