@@ -3,18 +3,22 @@ if(__ALLOW_ACCESS__ !=1) {
     header("location:../../index.php");
 
 }
-$next_index=$current_index+__RECORDS_PER_PAGE__;
-if(($current_index-__RECORDS_PER_PAGE__)>0){
-    $previous_index=$current_index-__RECORDS_PER_PAGE__;
-}else{
-    $previous_index=0;
+$next=$current_index+__RECORDS_PER_PAGE__;
+$prev=($current_index - __RECORDS_PER_PAGE__);
+if($prev>0)
+{
+    $previous=$prev;
+}
+else
+{
+    $previous=0;
 }
 
 if (isset($_POST['logout']))
 {
     session_destroy();
     header('location:index.php');
-//    header("Refresh:0");
+
 }
 ?>
 <!DOCTYPE html>
@@ -126,6 +130,18 @@ if (isset($_POST['logout']))
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                                <?php
+//                                var_dump($Users);
+                                if(empty($Users))
+                                {?>
+                                <div class="col-md-9 personal-info">
+                                    <div class="alert alert-info alert-primary">
+                                        <h3 >No More Data</h3>
+
+
+                                    </div>
+                                    <?php } ?>
+
                                 <?php foreach($Users as $user): ?>
                                     <div class="tab_grid">
                                         <div class="col-sm-3 loc_1">
@@ -138,7 +154,7 @@ if (isset($_POST['logout']))
 
                                                 <ul class="links_bottom">
 
-                                                    <!--													<li><a href="location_single.html"><i class="fa fa-envelope-o icon_1"> </i><span class="icon_text"> </span></a></li>-->
+
                                                     <li><a> <span class="icon_text"><?= $user['job'] ?></span></a></li>
                                                     <li class="last"><a href="<?php echo $_SERVER['PHP_SELF'];?>/?id=<?= $user['id'] ?>"><span class="icon_text">More <i class="fa fa-caret-right icon_1"> </i></span></a></li>
                                                 </ul>
@@ -159,8 +175,12 @@ if (isset($_POST['logout']))
 
     <div class="clearfix"></div>
 </div>
-<a class="btn btn-primary btn-lg btn-block " href="<?= "index.php?next=".$previous_index?>" role="button">Previous</a>
-<a class="btn btn-success btn-lg btn-block " href="<?= "index.php?next=".$next_index?>" role="button">Next</a>
+<div  style=" margin-left: 15%;"  >
+    <?php if(!empty($Users)){?>
+<a class="btn btn-primary btn-lg " href="<?php echo $_SERVER['PHP_SELF']."?next=".$previous ?>" role="button">Previous</a>
+
+<a class="btn btn-success btn-lg" href="<?php echo $_SERVER['PHP_SELF']."?next=".$next ?>" role="button">Next</a>
+<?php } ?>
 
 
 </div>
