@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2019 at 10:05 PM
+-- Generation Time: Feb 10, 2019 at 06:36 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -44,18 +44,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `Name`, `Job`, `image`, `cv`, `is_admin`) VALUES
-(1, 'Mohamedelmansy', '12345', 'mohamed', 'developer', 'img1.jpg', 'cv1', 'true'),
-(2, 'youmna1', '12345', 'youmna', 'developer', 'img2.jpg', 'cv2', 'false'),
-(3, 'ali30', '12345', 'asdlsnkadlk', 'sandlnas', '4tOINMsu_400x400.jpg', 'cv.pdf', ''),
-(4, '12345', 'ali', 'ali20', 'dev', '3E15C70900000578-4295170-image-a-28_1489023487876.jpg', 'cv.pdf', ''),
-(7, 'sdsd', 'ddddd', 'dsd', 'sdsd', '31_nchold.jpg', 'cv.pdf', ''),
-(12, '1231315', 'zzzzz', 'zzzzzzzzzz', 'xccasd', '4tOINMsu_400x400.jpg', 'cv.pdf', 'false'),
-(13, 'ccccccccc', 'zzzzzzzz', 'cccccccccc', 'aasdsad', '3E15C70900000578-4295170-image-a-28_1489023487876.jpg', 'cv.pdf', 'false'),
-(14, 'username', 'pass', 'name', 'hob', '4tOINMsu_400x400.jpg', 'cv.pdf', 'false'),
-(15, 'sadsad', '12345', 'aliali', 'masd;ma', '3E15C70900000578-4295170-image-a-28_1489023487876.jpg', 'cv.pdf', 'false'),
-(17, 'mmmmmm', 'mmmmm', 'mmmmmm', 'mmmmmm', '4tOINMsu_400x400.jpg', 'cv.pdf', 'false'),
-(19, 'nlnasdl', 'sa315dsa', 'aaaaaaaaaa', 'asdjkasnd', '3E15C70900000578-4295170-image-a-28_1489023487876.jpg', 'cv.pdf', 'false'),
-(21, 'aslnklsadn', 'nlsandlsa', 'sadnlskandl', 'naskdnsa;', '3E15C70900000578-4295170-image-a-28_1489023487876.jpg', 'cv.pdf', 'false');
+(1, 'youmna', '25f9e794323b453885f5181f1b624d0b', 'youmna', 'developer', 'youmna.jpg', 'youmna.pdf', 'true'),
+(2, 'Mohamedelmansy', '25f9e794323b453885f5181f1b624d0b', 'mohamedelmansy', 'developer', 'Mohamedelmansy.jpg', 'Mohamedelmansy.pdf', 'false'),
+(54, 'ali', '25f9e794323b453885f5181f1b624d0b', 'ali', 'developer', 'ali.jpg', 'ali.pdf', 'false'),
+(55, 'ziad', '25f9e794323b453885f5181f1b624d0b', 'ziad', 'aaa', 'ziad.jpg', 'ziad.pdf', 'false'),
+(56, 'tarek', 'bbb8aae57c104cda40c93843ad5e6db8', 'tarek', 'mmm', 'tarek.jpg', 'tarek.pdf', 'false'),
+(57, 'ibrahim', '25f9e794323b453885f5181f1b624d0b', 'ibrahim', 'developer', 'ibrahim.jpg', 'ibrahim.pdf', 'false'),
+(58, 'mostafa', '25f9e794323b453885f5181f1b624d0b', 'mostafa', 'aaa', 'mostafa.jpg', 'mostafa.pdf', 'false');
 
 --
 -- Indexes for dumped tables
@@ -76,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

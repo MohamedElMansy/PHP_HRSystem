@@ -10,6 +10,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		$db_handler= new LogIn($username,$password);
 		$db_result_user=$db_handler->db_check_user();
 		$db_result_admin=$db_handler->db_check_admin();
+
 		if (isset($db_result_admin) && !empty($db_result_admin) ) {
 			$_SESSION['username']=$username;
 			$_SESSION["is_admin"] = true;
